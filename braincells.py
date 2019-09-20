@@ -167,22 +167,22 @@ B = 0.25
 
 lightcolors = eglfloats([math.ceil(random.random()-0.5) for _ in range(0, len(lightpositions)//2*3)])
 
-lightcolors = eglfloats([
-    1.0, 0.0, 0.0, #AF3
-    1.0, 0.0, 0.0, #AF4
-    0.0, 1.0, 1.0, #F7
-    0.0, 1.0, 1.0, #F8
-    0.0, 1.0, 0.0, #F3
-    0.0, 1.0, 0.0, #F4
-    1.0, 1.0, 0.0, #FC5
-    1.0, 1.0, 0.0, #FC6
-    1.0, 0.0, 1.0, #T7
-    1.0, 0.0, 1.0, #T8
-    0.0, 1.0, 0.0, #P7
-    0.0, 1.0, 0.0, #P8
-    0.0, 0.0, 1.0, #O1
-    0.0, 0.0, 1.0, #O2
-])
+# lightcolors = eglfloats([
+#     1.0, 0.0, 0.0, #AF3
+#     1.0, 0.0, 0.0, #AF4
+#     0.0, 1.0, 1.0, #F7
+#     0.0, 1.0, 1.0, #F8
+#     0.0, 1.0, 0.0, #F3
+#     0.0, 1.0, 0.0, #F4
+#     1.0, 1.0, 0.0, #FC5
+#     1.0, 1.0, 0.0, #FC6
+#     1.0, 0.0, 1.0, #T7
+#     1.0, 0.0, 1.0, #T8
+#     0.0, 1.0, 0.0, #P7
+#     0.0, 1.0, 0.0, #P8
+#     0.0, 0.0, 1.0, #O1
+#     0.0, 0.0, 1.0, #O2
+# ])
 
 print("lights", lightcolors)
 
@@ -250,7 +250,7 @@ opengles.glBufferData(GL_ARRAY_BUFFER, points.nbytes, points.ctypes.data, GL_STA
 catcherror("allocate buffers")
 #
 
-TEXSCALE = 1.0/8.0 #1.0/1.0
+TEXSCALE = 1.0/32.0 #1.0/1.0
 TEXWIDTH = int(WIDTH.value * TEXSCALE)
 TEXHEIGHT = int(HEIGHT.value * TEXSCALE)
 #gltexsize = eglfloats([float(TEXWIDTH), float(TEXHEIGHT)])
@@ -380,8 +380,8 @@ bands.connect('ipc:///var/socks/bands')
 bands.setsockopt(zmq.SUBSCRIBE, b'')
 
 FPS = 120.0
-# STEPRATE = 0.175
-STEPRATE = 1.0
+STEPRATE = 0.175
+# STEPRATE = 1.0
 counter = 0
 THRESHOLD = 1.0/2.25
 
@@ -413,18 +413,18 @@ while True:
             if beta > globl*THRESHOLD:
                 lightcolors[r] = 1.0
             else:
-                lightcolors[r] = beta / (globl * THRESHOLD)
-                # lightcolors[r] = 1.0
+                # lightcolors[r] = beta / (globl * THRESHOLD)
+                lightcolors[r] = 0.0
             if theta > globl*THRESHOLD:
                 lightcolors[g] = 1.0
             else:
-                lightcolors[g] = theta / (globl * THRESHOLD)
-                # lightcolors[g] = 1.0
+                # lightcolors[g] = theta / (globl * THRESHOLD)
+                lightcolors[g] = 0.0
             if alpha > globl*THRESHOLD:
                 lightcolors[b] = 1.0
             else:
-                lightcolors[b] = alpha / (globl * THRESHOLD)
-                # lightcolors[b] = 1.0
+                # lightcolors[b] = alpha / (globl * THRESHOLD)
+                lightcolors[b] = 0.0
     counter += STEPRATE
     # if True:
     opengles.glFlush()
