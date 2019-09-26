@@ -52,41 +52,6 @@ points = np.array([
   [-1, 1, 1]
 ], dtype="float32")
 
-lightcolors = np.array([
-  [0, 0, 0],
-  [1, 0, 0],
-  [0, 0, 1],
-  [1, 1, 1]
-], dtype="float32")
-
-lightpositions = np.array([
-  [-0.5, -0.5],
-  [0.5, -0.5],
-  [-0.5, 0.5],
-  [0.5, 0.5]
-], dtype="float32")
-
-lightpositions = np.array([
-  [0, 1],
-  [1, 1],
-  [0, 0],
-  [1, 0]
-], dtype="float32")
-
-lightcolors = eglfloats([
-  1.0, 0.0, 0.0,
-  0.0, 1.0, 0.0,
-  0.0, 0.0, 1.0,
-  1.0, 1.0, 1.0
-])
-
-lightpositions = eglfloats([
-  0.0, 1.0,
-  1.0, 1.0,
-  0.0, 0.0,
-  1.0, 0.0
-])
-
 # Top-down
 lightpositions = eglfloats([
     0.4, 0.7225, #AF3
@@ -105,84 +70,7 @@ lightpositions = eglfloats([
     0.6175, 0.1725, #O2
 ])
 
-# Left-right
-lightpositions = eglfloats([
-    0.7225, 0.4, #AF3
-    0.725, 0.5675, #AF4
-    0.6975, 0.22, #F7
-    0.6975, 0.7475, #F8
-    0.6225, 0.3475, #F3
-    0.6225, 0.615, #F4
-    0.5675, 0.245, #FC5
-    0.57, 0.7225, #FC6
-    0.49, 0.145, #T7
-    0.485, 0.825, #T8
-    0.3, 0.2075, #P7
-    0.3, 0.76, #P8
-    0.1725, 0.3475, #O1
-    0.1725, 0.6175, #O2
-])
-
-#halfbrain
-def t(p):
-    return (p-0.40)*2
-
-lightpositions = eglfloats([
-    0.725, t(0.5675), #AF3
-    0.725, t(0.5675), #AF4
-    0.6975, t(0.7475), #F7
-    0.6975, t(0.7475), #F8
-    0.6225, t(0.615), #F3
-    0.6225, t(0.615), #F4
-    0.57, t(0.7225), #FC5
-    0.57, t(0.7225), #FC6
-    0.485, t(0.825), #T7
-    0.485, t(0.825), #T8
-    0.3, t(0.76), #P7
-    0.3, t(0.76), #P8
-    0.1725, t(0.6175), #O1
-    0.1725, t(0.6175), #O2
-])
-
-O = 0.045
-K = 0.13
-T = 0.75
-B = 0.25
-#lightpositions = eglfloats([
-#    O+K*0, T, #AF3
-#    O+K*0, B, #AF4
-#    O+K*1, T, #F7
-#    O+K*1, B, #F8
-#    O+K*2, T, #F3
-#    O+K*2, B, #F4
-#    O+K*3, T, #FC5
-#    O+K*3, B, #FC6
-#    O+K*4, T, #T7
-#    O+K*4, B, #T8
-#    O+K*5, T, #P7
-#    O+K*5, B, #P8
-#    O+K*6, T, #O1
-#    O+K*6, B, #O2
-#])
-
 lightcolors = eglfloats([math.ceil(random.random()-0.5) for _ in range(0, len(lightpositions)//2*3)])
-
-# lightcolors = eglfloats([
-#     1.0, 0.0, 0.0, #AF3
-#     1.0, 0.0, 0.0, #AF4
-#     0.0, 1.0, 1.0, #F7
-#     0.0, 1.0, 1.0, #F8
-#     0.0, 1.0, 0.0, #F3
-#     0.0, 1.0, 0.0, #F4
-#     1.0, 1.0, 0.0, #FC5
-#     1.0, 1.0, 0.0, #FC6
-#     1.0, 0.0, 1.0, #T7
-#     1.0, 0.0, 1.0, #T8
-#     0.0, 1.0, 0.0, #P7
-#     0.0, 1.0, 0.0, #P8
-#     0.0, 0.0, 1.0, #O1
-#     0.0, 0.0, 1.0, #O2
-# ])
 
 print("lights", lightcolors)
 
