@@ -267,7 +267,7 @@ bands = context.socket(zmq.SUB)
 bands.connect('ipc:///var/socks/bands')
 bands.setsockopt(zmq.SUBSCRIBE, b'')
 
-FPS = 120.0
+FPS = 60.0
 STEPRATE = 0.175
 # STEPRATE = 1.0
 counter = 0
@@ -323,6 +323,6 @@ while True:
     draw()
     opengles.glFinish()
 
-    # dt = time.time() - t
-    # if dt < 1.0/FPS:
-        # time.sleep(1.0/FPS - dt)
+    dt = time.time() - t
+    if dt < 1.0/FPS:
+        time.sleep(1.0/FPS - dt)
