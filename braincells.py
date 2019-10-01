@@ -321,6 +321,7 @@ while True:
         swaptex()
         counter -= 1
     draw()
+    opengles.glFinish()
 
     # dt = time.time() - t
     # if dt < 1.0/FPS:
