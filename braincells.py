@@ -298,17 +298,17 @@ while True:
             g = i*3+1
             b = i*3+2
 
-            if beta > globl*THRESHOLD*1.1:
+            if beta > globl*THRESHOLD:
                 lightcolors[r] = 1.0
             else:
                 # lightcolors[r] = beta / (globl * THRESHOLD)
                 lightcolors[r] = 0.0
-            if theta > globl*THRESHOLD:
+            if theta > globl*THRESHOLD*1.05:
                 lightcolors[g] = 1.0
             else:
                 # lightcolors[g] = theta / (globl * THRESHOLD)
                 lightcolors[g] = 0.0
-            if alpha > globl*THRESHOLD:
+            if alpha > globl*THRESHOLD*0.95:
                 lightcolors[b] = 1.0
             else:
                 # lightcolors[b] = alpha / (globl * THRESHOLD)
